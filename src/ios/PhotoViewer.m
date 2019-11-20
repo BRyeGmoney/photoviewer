@@ -136,7 +136,12 @@
 
 - (NSURL *)localFileURLForImage:(NSString *)image
 {
-    NSString* webStringURL = [image stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    Boolean isMediaValet = [image rangeOfString:@"mvsfservicefabriccato"].length > 0;
+    NSString* webStringURL = image;
+
+    if (!isMediaValet) {
+        webStringURL = [image stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    }
     NSURL* fileURL = [NSURL URLWithString:webStringURL];
 
     if (copyToReference && ![fileURL isFileReferenceURL]) {
