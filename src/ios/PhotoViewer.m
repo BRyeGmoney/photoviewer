@@ -142,6 +142,9 @@
     if (!isMediaValet) {
         webStringURL = [image stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
     }
+
+    printf("This is the url that we're using to show the image: ");
+    printf(webStringURL);
     NSURL* fileURL = [NSURL URLWithString:webStringURL];
 
     if (copyToReference && ![fileURL isFileReferenceURL]) {
